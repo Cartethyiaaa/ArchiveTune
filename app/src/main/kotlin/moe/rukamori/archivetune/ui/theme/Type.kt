@@ -23,7 +23,7 @@ private fun buildTypography(fontFamily: FontFamily) =
                 fontWeight = FontWeight.Normal,
                 fontSize = 57.sp,
                 lineHeight = 64.sp,
-                letterSpacing = 0.sp,
+                letterSpacing = (-1.2).sp,
             ),
         displayMedium =
             TextStyle(
@@ -31,7 +31,7 @@ private fun buildTypography(fontFamily: FontFamily) =
                 fontWeight = FontWeight.Normal,
                 fontSize = 45.sp,
                 lineHeight = 52.sp,
-                letterSpacing = 0.sp,
+                letterSpacing = (-1.0).sp,
             ),
         displaySmall =
             TextStyle(
@@ -39,31 +39,31 @@ private fun buildTypography(fontFamily: FontFamily) =
                 fontWeight = FontWeight.Normal,
                 fontSize = 36.sp,
                 lineHeight = 44.sp,
-                letterSpacing = 0.sp,
+                letterSpacing = (-0.8).sp,
             ),
         headlineLarge =
             TextStyle(
                 fontFamily = fontFamily,
-                fontWeight = FontWeight.Normal,
+                fontWeight = FontWeight.SemiBold,
                 fontSize = 32.sp,
                 lineHeight = 40.sp,
-                letterSpacing = 0.sp,
+                letterSpacing = (-0.7).sp,
             ),
         headlineMedium =
             TextStyle(
                 fontFamily = fontFamily,
-                fontWeight = FontWeight.Normal,
+                fontWeight = FontWeight.SemiBold,
                 fontSize = 28.sp,
                 lineHeight = 36.sp,
-                letterSpacing = 0.sp,
+                letterSpacing = (-0.5).sp,
             ),
         headlineSmall =
             TextStyle(
                 fontFamily = fontFamily,
-                fontWeight = FontWeight.Normal,
+                fontWeight = FontWeight.SemiBold,
                 fontSize = 24.sp,
                 lineHeight = 32.sp,
-                letterSpacing = 0.sp,
+                letterSpacing = (-0.3).sp,
             ),
         titleLarge =
             TextStyle(
@@ -139,7 +139,13 @@ private fun buildTypography(fontFamily: FontFamily) =
             ),
     )
 
-val AppFontFamily = FontFamily(Font(R.font.poppins))
+val AppFontFamily =
+    FontFamily(
+        Font(R.font.geist_regular, FontWeight.Normal),
+        Font(R.font.geist_medium, FontWeight.Medium),
+        Font(R.font.geist_semibold, FontWeight.SemiBold),
+        Font(R.font.geist_bold, FontWeight.Bold),
+    )
 val LyricsFontFamily = FontFamily(Font(R.font.sfprodisplaybold))
 val AppTypography = buildTypography(AppFontFamily)
 val SystemTypography = buildTypography(FontFamily.Default)

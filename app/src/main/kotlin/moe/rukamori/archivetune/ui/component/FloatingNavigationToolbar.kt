@@ -29,11 +29,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.ShortNavigationBar
 import androidx.compose.material3.ShortNavigationBarArrangement
 import androidx.compose.material3.ShortNavigationBarItem
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -51,6 +49,8 @@ import moe.rukamori.archivetune.constants.FloatingBarOuterCornerRadius
 import moe.rukamori.archivetune.constants.FloatingBarStandaloneCornerRadius
 import moe.rukamori.archivetune.constants.NavigationBarHeight
 import moe.rukamori.archivetune.constants.NavigationBarMaxWidth
+import dev.chrisbanes.haze.HazeState
+import moe.rukamori.archivetune.ui.glass.glassPanel
 import moe.rukamori.archivetune.ui.screens.Screens
 
 private val NavigationItemsMaxWidth = 360.dp
@@ -65,6 +65,7 @@ fun FloatingNavigationToolbar(
     isSelected: (Screens) -> Boolean,
     onItemClick: (Screens, Boolean) -> Unit,
     onSearchItemDoubleClick: (() -> Unit)? = null,
+    hazeState: HazeState? = null,
 ) {
     val miniPlayerProximity = miniPlayerProximityProvider()
     val navigationShape =
@@ -84,16 +85,17 @@ fun FloatingNavigationToolbar(
                 .windowInsetsPadding(WindowInsets.systemBars.only(WindowInsetsSides.Horizontal)),
         contentAlignment = Alignment.Center,
     ) {
-        Surface(
+        Box(
             modifier =
                 Modifier
                     .widthIn(max = NavigationBarMaxWidth)
                     .fillMaxWidth()
-                    .height(NavigationBarHeight),
-            shape = navigationShape,
-            color = navigationContainerColor,
-            tonalElevation = NavigationBarDefaults.Elevation,
-            shadowElevation = NavigationBarDefaults.Elevation,
+                    .height(NavigationBarHeight)
+                    .glassPanel(
+                        hazeState = hazeState,
+                        shape = navigationShape,
+                        tint = navigationContainerColor,
+                    ),
         ) {
             ShortNavigationBar(
                 modifier = Modifier.fillMaxSize(),

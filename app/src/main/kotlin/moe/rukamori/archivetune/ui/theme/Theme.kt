@@ -175,13 +175,13 @@ fun ArchiveTuneTheme(
                         .RoundedCornerShape(12.dp),
                 medium =
                     androidx.compose.foundation.shape
-                        .RoundedCornerShape(16.dp),
+                        .RoundedCornerShape(20.dp),
                 large =
                     androidx.compose.foundation.shape
-                        .RoundedCornerShape(24.dp),
+                        .RoundedCornerShape(28.dp),
                 extraLarge =
                     androidx.compose.foundation.shape
-                        .RoundedCornerShape(32.dp),
+                        .RoundedCornerShape(36.dp),
             )
         }
 

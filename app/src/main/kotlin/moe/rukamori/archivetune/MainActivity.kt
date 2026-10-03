@@ -173,6 +173,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import dev.chrisbanes.haze.hazeSource
+import dev.chrisbanes.haze.rememberHazeState
 import androidx.window.core.layout.WindowSizeClass
 import coil3.imageLoader
 import coil3.request.ImageRequest
@@ -926,6 +928,7 @@ class MainActivity : ComponentActivity() {
                 customFontUri = customFontUri,
             ) {
                 val navController = rememberNavController()
+                val glassHazeState = rememberHazeState()
                 val onboardingViewModel: OnboardingViewModel = hiltViewModel()
                 val onboardingState by onboardingViewModel.screenState.collectAsStateWithLifecycle()
                 var showOnboardingLogin by rememberSaveable { mutableStateOf(false) }
@@ -2291,6 +2294,7 @@ class MainActivity : ComponentActivity() {
                                             FloatingNavigationToolbar(
                                                 items = navigationItems,
                                                 pureBlack = pureBlack,
+                                                hazeState = glassHazeState,
                                                 miniPlayerProximityProvider = navigationProximityProvider,
                                                 modifier =
                                                     Modifier
@@ -2542,7 +2546,7 @@ class MainActivity : ComponentActivity() {
                                                 },
                                             ).nestedScroll(
                                                 topAppBarScrollBehavior.nestedScrollConnection,
-                                            ),
+                                            ).hazeSource(glassHazeState),
                                 ) {
                                     navigationBuilder(
                                         navController,
